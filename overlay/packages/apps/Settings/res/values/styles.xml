@@ -26,6 +26,8 @@
 
     <style name="SuggestionCardIcon">
         <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginStart">12.0dip</item>
+        <item name="android:layout_marginEnd">12.0dip</item>
         <item name="android:layout_alignParentStart">false</item>
     </style>
 
