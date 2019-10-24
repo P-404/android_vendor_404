@@ -36,6 +36,10 @@ PRODUCT_COPY_FILES += \
     vendor/404/configs/permissions/privapp-permissions-p404-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-p404.xml \
     vendor/404/configs/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml
 
+# Android Beam
+PRODUCT_COPY_FILES += \
+    vendor/404/configs/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
+
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
     vendor/404/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
