@@ -45,6 +45,8 @@ PRODUCT_PACKAGES += \
 # 404 Packages
 PRODUCT_PACKAGES += \
     P404Launcher \
+    P404ThemePickerOverlay \
+    P404ThemesStub \
     Covers \
     ThemePicker \
     AbleMusic \
