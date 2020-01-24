@@ -14,6 +14,10 @@
 # limitations under the License.
 #
 
+# Charger
+PRODUCT_PACKAGES += \
+    p404_charger
+
 # Filesystems tools
 PRODUCT_PACKAGES += \
     fsck.ntfs \
