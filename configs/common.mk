@@ -36,8 +36,11 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
 
+# Fonts
+include vendor/p404/configs/fonts.mk
+
 # Common overlays
-DEVICE_PACKAGE_OVERLAYS += vendor/p404/overlay
+DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 
 # World APN list
 PRODUCT_COPY_FILES += \
