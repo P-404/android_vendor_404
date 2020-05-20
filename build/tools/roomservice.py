@@ -44,7 +44,7 @@ DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
 custom_local_manifest = ".repo/local_manifests/p404.xml"
-custom_default_revision = "queen-cake"
+custom_default_revision =  os.getenv('ROOMSERVICE_DEFAULT_BRANCH', 'queen-cake')
 custom_dependencies = "p404.dependencies"
 org_manifest = "p404-devices"  # leave empty if org is provided in manifest
 org_display = "P404-Devices"  # needed for displaying
