@@ -22,6 +22,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.error.receiver.system.apps=com.google.android.gms \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural \
     ro.setupwizard.require_network=any \
     ro.setupwizard.mode=OPTIONAL \
     ro.opa.eligible_device=true
