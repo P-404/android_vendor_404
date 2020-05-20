@@ -10,6 +10,11 @@ $(call add_json_str,  Target_shim_libs,                             $(TARGET_LD_
 $(call add_json_bool, Target_uses_color_metadata,                   $(filter true,$(TARGET_USES_COLOR_METADATA)))
 $(call add_json_str_omitempty, Additional_gralloc_10_usage_bits,    $(TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS))
 $(call add_json_val_default, Bootloader_message_offset,             $(BOOTLOADER_MESSAGE_OFFSET), 0)
+$(call add_json_bool, 	Uses_qcom_um_family, 				$(filter true,$(TARGET_USES_QCOM_UM_FAMILY)))
+$(call add_json_bool, 	Uses_qcom_um_3_18_family, 			$(filter true,$(TARGET_USES_QCOM_UM_3_18_FAMILY)))
+$(call add_json_bool, 	Uses_qcom_um_4_4_family, 			$(filter true,$(TARGET_USES_QCOM_UM_4_4_FAMILY)))
+$(call add_json_bool, 	Uses_qcom_um_4_9_family, 			$(filter true,$(TARGET_USES_QCOM_UM_4_9_FAMILY)))
+$(call add_json_bool, 	Uses_qcom_um_4_14_family, 			$(filter true,$(TARGET_USES_QCOM_UM_4_14_FAMILY)))
 
 # This causes the build system to strip out the last comma in our nested struct, to keep the JSON valid.
 _json_contents := $(_json_contents)__SV_END
