@@ -2,6 +2,7 @@ function __print_p404_functions_help() {
 cat <<EOF
 Additional functions:
 - mka:             Builds using SCHED_BATCH on all processors.
+- repopick:        Utility to fetch changes from Gerrit.
 EOF
 }
 
@@ -59,4 +60,10 @@ function brunch()
         return 1
     fi
     return $?
+}
+
+function repopick() {
+    set_stuff_for_environment
+    T=$(gettop)
+    $T/vendor/p404/build/tools/repopick.py $@
 }
