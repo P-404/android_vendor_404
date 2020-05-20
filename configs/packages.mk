@@ -33,6 +33,10 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     P404ThemesStub
 
+# FontOverlays
+PRODUCT_PACKAGES += \
+    FontGoogleSansOverlay
+
 # Device Personalization Services
 PRODUCT_PACKAGES += MatchmakerPrebuilt
 
