@@ -23,6 +23,12 @@ DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 # Packages
 include vendor/p404/configs/packages.mk
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
+    vendor/p404/configs/permissions/privapp-permissions-p404-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-p404.xml \
+    vendor/p404/configs/permissions/privapp-permissions-p404-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-p404.xml
+
 # World APN list
 PRODUCT_COPY_FILES += \
     vendor/p404/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
