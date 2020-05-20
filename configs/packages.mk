@@ -38,3 +38,9 @@ PRODUCT_PACKAGES += MatchmakerPrebuilt
 PRODUCT_PACKAGES += \
     charger_res_images \
     product_charger_res_images
+
+# Telephony
+PRODUCT_PACKAGES += \
+    messaging \
+    Stk \
+    CellBroadcastReceiver
