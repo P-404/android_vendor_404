@@ -46,6 +46,10 @@ DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 PRODUCT_COPY_FILES += \
     vendor/p404/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/p404/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
+
 # Branding stuffs
 LUCID_VERSION := 1.0
 LUCID_VERSION_CODE := Queen-Cake
