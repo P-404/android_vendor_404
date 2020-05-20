@@ -21,10 +21,9 @@ function mka() {
 function breakfast()
 {
     target=$1
-    LUCID_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
-    for f in `/bin/ls vendor/p404/vendorsetup.sh 2> /dev/null`
+    for f in `/bin/ls vendor/404/vendorsetup.sh 2> /dev/null`
         do
             echo "including $f"
             . $f
@@ -65,5 +64,5 @@ function brunch()
 function repopick() {
     set_stuff_for_environment
     T=$(gettop)
-    $T/vendor/p404/build/tools/repopick.py $@
+    $T/vendor/404/build/tools/repopick.py $@
 }

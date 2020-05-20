@@ -1,5 +1,5 @@
 # Include board/platform macros
-include vendor/p404/build/core/utils.mk
+include vendor/404/build/core/utils.mk
 
 # Include vendor platform definitions
-include vendor/p404/build/core/vendor/*.mk
+include vendor/404/build/core/vendor/*.mk
