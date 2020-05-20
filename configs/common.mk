@@ -28,6 +28,10 @@ PRODUCT_PACKAGES += \
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/p404/overlay
 
+# World APN list
+PRODUCT_COPY_FILES += \
+    vendor/p404/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+
 # Branding stuffs
 LUCID_VERSION := 1.0
 LUCID_VERSION_CODE := Queen-Cake
