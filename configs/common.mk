@@ -25,6 +25,10 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# P404 Packages
+PRODUCT_PACKAGES += \
+    P404Launcher
+
 # Offline charger
 PRODUCT_PACKAGES += \
     charger_res_images \
