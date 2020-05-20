@@ -180,6 +180,14 @@ def add_to_manifest(repos, fallback_branch=None):
                     "name": "%s" % repo_name}
         )
 
+        if 'override' in repo:
+            override = repo['override']
+            rmproject = ElementTree.Element(
+                "remove-project",
+                attrib = {"name": override}
+            )
+            lm.append(rmproject)
+
         clone_depth = os.getenv('ROOMSERVICE_CLONE_DEPTH')
         if clone_depth:
             project.set('clone-depth', clone_depth)
