@@ -31,6 +31,9 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     P404ThemesStub
 
+# Device Personalization Services
+PRODUCT_PACKAGES += MatchmakerPrebuilt
+
 # Offline charger
 PRODUCT_PACKAGES += \
     charger_res_images \
