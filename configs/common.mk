@@ -27,7 +27,8 @@ PRODUCT_PACKAGES += \
 
 # P404 Packages
 PRODUCT_PACKAGES += \
-    P404Launcher
+    P404Launcher \
+    ThemePicker
 
 # Offline charger
 PRODUCT_PACKAGES += \
