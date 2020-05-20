@@ -1,4 +1,4 @@
-# Copyright (C) 2020 P404 Project
+# Copyright (C) 2020 404 Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,12 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------
-# P404 OTA update package
+# PP404 OTA update package
+
+P404_TARGET_PACKAGE := $(PRODUCT_OUT)/project-404-$(P404_VERSION).zip
 
 .PHONY: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LUCID_TARGET_ZIP)
-	$(hide) $(MD5SUM) $(LUCID_TARGET_ZIP) | sed "s|$(PRODUCT_OUT)/||" > $(LUCID_TARGET_ZIP).md5sum
-	@echo "Package Complete: $(LUCID_TARGET_ZIP)" >&2
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(P404_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(P404_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(P404_TARGET_PACKAGE).md5sum
+	@echo "Package Complete: $(P404_TARGET_PACKAGE)" >&2
