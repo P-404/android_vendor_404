@@ -25,6 +25,11 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# Offline charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    product_charger_res_images
+
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/p404/overlay
 
