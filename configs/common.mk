@@ -14,33 +14,14 @@
 # limitations under the License.
 #
 
-# Include support for additional filesystems
-PRODUCT_PACKAGES += \
-    e2fsck \
-    mke2fs \
-    tune2fs \
-    mount.exfat \
-    fsck.exfat \
-    mkfs.exfat \
-    ntfsfix \
-    ntfs-3g
-
-# P404 Packages
-PRODUCT_PACKAGES += \
-    P404Launcher \
-    ThemePicker \
-    P404ThemesStub
-
-# Offline charger
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
-
 # Fonts
 include vendor/p404/configs/fonts.mk
 
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
+
+# Packages
+include vendor/p404/configs/packages.mk
 
 # World APN list
 PRODUCT_COPY_FILES += \
