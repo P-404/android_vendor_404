@@ -14,7 +14,7 @@
 # limitations under the License.
 
 # Override undesired Google defaults
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     keyguard.no_require_sim=true \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.com.android.wifi-watchlist=GoogleGuest \
@@ -26,15 +26,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # GMS-Client
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.clientidbase=android-google
 else
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.clientidbase=$(PRODUCT_GMS_CLIENTID_BASE)
 endif
 
 # SeLinux
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.build.selinux=1
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
@@ -44,7 +44,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
 endif
 
 # Branding Props
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.modversion=$(LUCID_VERSION)-$(shell date -u +%Y%m%d) \
     ro.p404.version=$(LUCID_VERSION) \
     ro.p404.version_code=$(LUCID_VERSION_CODE) \
