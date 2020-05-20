@@ -17,6 +17,6 @@
 
 .PHONY: bacon
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(LUCID_TARGET_ZIP)
+	$(hide) mv $(INTERNAL_OTA_PACKAGE_TARGET) $(LUCID_TARGET_ZIP)
 	$(hide) $(MD5SUM) $(LUCID_TARGET_ZIP) | sed "s|$(PRODUCT_OUT)/||" > $(LUCID_TARGET_ZIP).md5sum
 	@echo "Package Complete: $(LUCID_TARGET_ZIP)" >&2
