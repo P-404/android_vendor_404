@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Inherit art options
+include vendor/p404/configs/art.mk
+
 # Fonts
 include vendor/p404/configs/fonts.mk
 
