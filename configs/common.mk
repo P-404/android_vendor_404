@@ -25,5 +25,16 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# Branding stuffs
+LUCID_VERSION := 1.0
+LUCID_VERSION_CODE := Queen-Cake
+LUCID_BUILD_NUMBER := LPBN.Q0202.$(shell date -u +%d).$(shell date -u +%m)001
+
+ifndef LUCID_BUILDTYPE
+  LUCID_BUILDTYPE := unofficial
+endif
+
+LUCID_TARGET_ZIP := p404-$(LUCID_BUILD)-Q-$(LUCID_VERSION)-$(shell date -u +%Y%m%d)-$(LUCID_BUILDTYPE).zip
+
 # Props
 include vendor/p404/configs/props.mk

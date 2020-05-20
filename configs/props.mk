@@ -42,3 +42,13 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=1
 else
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
 endif
+
+# Branding Props
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.modversion=$(LUCID_VERSION)-$(shell date -u +%Y%m%d) \
+    ro.p404.version=$(LUCID_VERSION) \
+    ro.p404.version_code=$(LUCID_VERSION_CODE) \
+    ro.p404.device=$(LUCID_BUILD) \
+    ro.p404.display.version=$(LUCID_VERSION) \
+    ro.p404.releasetype=$(LUCID_BUILDTYPE) \
+    ro.p404.build=$(LUCID_BUILD_NUMBER)
