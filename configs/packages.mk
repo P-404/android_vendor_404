@@ -30,6 +30,7 @@ PRODUCT_PACKAGES += \
     P404Launcher \
     Longshot \
     MarkupGoogle \
+    SettingsIntelligenceGooglePrebuilt \
     ThemePicker \
     P404ThemesStub
 
