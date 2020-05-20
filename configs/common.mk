@@ -23,6 +23,11 @@ include vendor/p404/configs/fonts.mk
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 
+# Markup Google
+PRODUCT_COPY_FILES += \
+    vendor/p404/prebuilt/lib/libsketchology_native.so:system/lib/libsketchology_native.so \
+    vendor/p404/prebuilt/lib64/libsketchology_native.so:system/lib64/libsketchology_native.so
+
 # Packages
 include vendor/p404/configs/packages.mk
 
