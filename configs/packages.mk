@@ -28,6 +28,7 @@ PRODUCT_PACKAGES += \
 # P404 Packages
 PRODUCT_PACKAGES += \
     P404Launcher \
+    Longshot \
     ThemePicker \
     P404ThemesStub
 
