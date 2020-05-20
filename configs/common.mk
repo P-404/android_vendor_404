@@ -25,6 +25,9 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# Common overlays
+DEVICE_PACKAGE_OVERLAYS += vendor/p404/overlay
+
 # Branding stuffs
 LUCID_VERSION := 1.0
 LUCID_VERSION_CODE := Queen-Cake
