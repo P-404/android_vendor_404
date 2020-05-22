@@ -34,6 +34,9 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     P404ThemesStub
 
+# Project 404 Overlays
+PRODUCT_PACKAGES += p404-overlays
+
 # FontOverlays
 PRODUCT_PACKAGES += \
     FontGoogleSansOverlay
