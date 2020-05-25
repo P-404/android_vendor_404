@@ -22,6 +22,10 @@ type Product_variables struct {
         Bootloader_message_offset struct {
 		Cflags []string
 	}
+        Qcom_um_soong_namespace struct {
+		Cflags []string
+		Header_libs []string
+	}
         Uses_qcom_um_family struct {
 		Cflags []string
 		Shared_libs []string
@@ -52,9 +56,10 @@ type ProductVariables struct {
 	Target_uses_color_metadata  *bool `json:",omitempty"`
 	Additional_gralloc_10_usage_bits  *string `json:",omitempty"`
         Bootloader_message_offset  *int `json:",omitempty"`
-        Uses_qcom_um_family  							*bool `json:",omitempty"`
-	Uses_qcom_um_3_18_family  						*bool `json:",omitempty"`
-	Uses_qcom_um_4_4_family  						*bool `json:",omitempty"`
-	Uses_qcom_um_4_9_family  						*bool `json:",omitempty"`
-	Uses_qcom_um_4_14_family  						*bool `json:",omitempty"`
+        Qcom_um_soong_namespace  *string `json:",omitempty"`
+        Uses_qcom_um_family  *bool `json:",omitempty"`
+	Uses_qcom_um_3_18_family  *bool `json:",omitempty"`
+	Uses_qcom_um_4_4_family  *bool `json:",omitempty"`
+	Uses_qcom_um_4_9_family  *bool `json:",omitempty"`
+	Uses_qcom_um_4_14_family  *bool `json:",omitempty"`
 }
