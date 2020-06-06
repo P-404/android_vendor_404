@@ -32,6 +32,7 @@ PRODUCT_PACKAGES += \
     MarkupGoogle \
     SettingsIntelligenceGooglePrebuilt \
     ThemePicker \
+    TurboPrebuilt \
     P404ThemesStub
 
 # Project 404 Overlays
