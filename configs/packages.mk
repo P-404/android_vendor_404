@@ -29,6 +29,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     P404Launcher \
     AbleMusic \
+    Covers \
     Longshot \
     MarkupGoogle \
     SettingsIntelligenceGooglePrebuilt \
