@@ -18,7 +18,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := p404-overlays
 LOCAL_REQUIRED_MODULES := \
     AccentColorGirlyPinkOverlay \
-    AccentColorGluieGreenOverlay \
+    AccentColorFerrariRedOverlay \
     AccentColorOrangenessOverlay \
     AccentColorPurpleismOverlay \
     AccentColorSpotifyGreenOverlay \

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (C) 2020 Project 404
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +13,9 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="co.p404.theme.color.gluiegreen"
-    android:versionCode="1"
-    android:versionName="1.0">
+<resources>
 
-    <overlay
-    android:targetPackage="android"
-    android:category="android.theme.customization.accent_color"
-    android:priority="600" />
+    <color name="accent_device_default_light">#ffff2800</color>
+    <color name="accent_device_default_dark">#fff12600</color>
 
-    <application
-    android:label="@string/accent_color_gluiegreen_overlay"
-    android:hasCode="false" />
-</manifest>
+</resources>

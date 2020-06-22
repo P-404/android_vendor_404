@@ -13,9 +13,17 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.p404.theme.color.ferrarired"
+    android:versionCode="1"
+    android:versionName="1.0">
 
-    <!-- Red accent color name application label. [CHAR LIMIT=50] -->
-    <string name="accent_color_gluiegreen_overlay" translatable="false">Gluie Green</string>
+    <overlay
+    android:targetPackage="android"
+    android:category="android.theme.customization.accent_color"
+    android:priority="600" />
 
-</resources>
+    <application
+    android:label="@string/accent_color_ferrarired_overlay"
+    android:hasCode="false" />
+</manifest>
