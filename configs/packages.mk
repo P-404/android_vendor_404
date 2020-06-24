@@ -25,6 +25,10 @@ PRODUCT_PACKAGES += \
     ntfsfix \
     ntfs-3g
 
+# Angle
+PRODUCT_PACKAGES += \
+    ANGLE
+
 # P404 Packages
 PRODUCT_PACKAGES += \
     P404Launcher \
