@@ -28,6 +28,11 @@ PRODUCT_COPY_FILES += \
     vendor/404/prebuilt/lib/libsketchology_native.so:system/lib/libsketchology_native.so \
     vendor/404/prebuilt/lib64/libsketchology_native.so:system/lib64/libsketchology_native.so
 
+# Turbo
+PRODUCT_COPY_FILES += \
+    vendor/404/configs/permissions/privapp-permissions-turbo.xml:system/etc/permissions/privapp-permissions-turbo.xml \
+    vendor/404/configs/sysconfig/turbo.xml:system/etc/sysconfig/turbo.xml
+
 # Packages
 include vendor/404/configs/packages.mk
 
