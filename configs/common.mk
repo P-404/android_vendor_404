@@ -17,41 +17,41 @@
 # Inherit art options
 include vendor/404/configs/art.mk
 
+# Branding stuffs
+include vendor/404/configs/branding.mk
+
 # Fonts
 include vendor/404/configs/fonts.mk
+
+# Packages
+include vendor/404/configs/packages.mk
+
+# Props
+include vendor/404/configs/props.mk
+
+# 404 Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
+    vendor/404/configs/permissions/privapp-permissions-p404-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-p404.xml \
+    vendor/404/configs/permissions/privapp-permissions-p404-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-p404.xml
+
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/404/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 
 # Markup Google
 PRODUCT_COPY_FILES += \
-    vendor/404/prebuilt/lib/libsketchology_native.so:system/lib/libsketchology_native.so \
-    vendor/404/prebuilt/lib64/libsketchology_native.so:system/lib64/libsketchology_native.so
+    vendor/404/prebuilt/lib/libsketchology_native.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libsketchology_native.so \
+    vendor/404/prebuilt/lib64/libsketchology_native.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libsketchology_native.so
 
 # Turbo
 PRODUCT_COPY_FILES += \
-    vendor/404/configs/permissions/privapp-permissions-turbo.xml:system/etc/permissions/privapp-permissions-turbo.xml \
-    vendor/404/configs/sysconfig/turbo.xml:system/etc/sysconfig/turbo.xml
-
-# Packages
-include vendor/404/configs/packages.mk
-
-# Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
-    vendor/404/configs/permissions/privapp-permissions-p404-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-p404.xml \
-    vendor/404/configs/permissions/privapp-permissions-p404-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-p404.xml
+    vendor/404/configs/permissions/privapp-permissions-turbo.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-turbo.xml \
+    vendor/404/configs/sysconfig/turbo.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/turbo.xml
 
 # World APN list
 PRODUCT_COPY_FILES += \
-    vendor/404/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
-
-# Backup Services whitelist
-PRODUCT_COPY_FILES += \
-    vendor/404/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
-
-# Branding stuffs
-include vendor/404/configs/branding.mk
-
-# Props
-include vendor/404/configs/props.mk
+    vendor/404/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
