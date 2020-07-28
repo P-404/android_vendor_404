@@ -44,6 +44,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/404/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
+# Use ccache
+USE_CCACHE := true
+USE_SYSTEM_CCACHE := true
+ifeq ($(filter-out true,$(USE_CCACHE)),)
+  ifeq ($(filter-out true,$(USE_SYSTEM_CCACHE)),)
+    CCACHE_EXEC := $(shell which ccache)
+  else
+    CCACHE_EXEC := prebuilts/build-tools/linux-x86/bin/ccache
+  endif
+endif
+
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 
