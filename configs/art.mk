@@ -26,7 +26,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # Dexopt boot types
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    pm.dexopt.first-boot=extract \
+    pm.dexopt.first-boot=quicken \
     pm.dexopt.boot=verify
 
 # Dexopt filters
