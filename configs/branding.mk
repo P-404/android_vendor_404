@@ -15,10 +15,10 @@
 #
 
 # Branding stuffs
-P404_VERSION_MAJ := 1
+P404_VERSION_MAJ := 3
 P404_VERSION_MIN := 0
 
-P404_VERSION_CODE := GLITCH
+P404_VERSION_CODE := MISCUE
 
 P404_BUILD_NUMBER := LPBN.Q0202.$(shell date -u +%d).$(shell date -u +%m)001
 
