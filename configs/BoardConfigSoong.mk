@@ -92,3 +92,8 @@ SOONG_CONFIG_aospGlobalVars_uses_camera_parameter_lib := $(TARGET_SPECIFIC_CAMER
 ifneq ($(filter $(UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
 SOONG_CONFIG_aospQcomVars_qcom_soong_namespace := $(QCOM_SOONG_NAMESPACE)
 endif
+
+# Qualcomm variables
+SOONG_CONFIG_NAMESPACES += aosp_vs_qva
+SOONG_CONFIG_aosp_vs_qva += aosp_or_qva
+SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := qva
