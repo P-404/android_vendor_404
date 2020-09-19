@@ -79,7 +79,9 @@ PRODUCT_VENDOR_MOVE_ENABLED := true
 DISABLE_EAP_PROXY := true
 
 # NameSpaces
+ifeq ($(TARGET_USE_QTI_BT_STACK),true)
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
+endif #TARGET_USE_QTI_BT_STACK
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
 
 # QCOM
