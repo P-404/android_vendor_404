@@ -79,3 +79,8 @@ PRODUCT_PACKAGES += \
     P404ThemesStub \
     Covers \
     ThemePicker
+
+# Overlays
+PRODUCT_PACKAGES += \
+    GesturalNavigationOverlayLong \
+    GesturalNavigationOverlayMedium
