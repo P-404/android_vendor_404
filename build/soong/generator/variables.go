@@ -6,12 +6,12 @@ import (
 	"android/soong/android"
 )
 
-func p404ExpandVariables(ctx android.ModuleContext, in string) string {
-	p404Vars := ctx.Config().VendorConfig("p404VarsPlugin")
+func aospExpandVariables(ctx android.ModuleContext, in string) string {
+	aospVars := ctx.Config().VendorConfig("aospVarsPlugin")
 
 	out, err := android.Expand(in, func(name string) (string, error) {
-		if p404Vars.IsSet(name) {
-			return p404Vars.String(name), nil
+		if aospVars.IsSet(name) {
+			return aospVars.String(name), nil
 		}
 		// This variable is not for us, restore what the original
 		// variable string will have looked like for an Expand
