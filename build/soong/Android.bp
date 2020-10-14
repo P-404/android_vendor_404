@@ -1,14 +1,6 @@
 bootstrap_go_package {
-    name: "soong-p404",
-    pkgPath: "p404/soong/android",
-    srcs: [
-        "android/variable.go",
-    ],
-}
-
-bootstrap_go_package {
-    name: "soong-p404-generator",
-    pkgPath: "p404/soong/generator",
+    name: "soong-aosp-generator",
+    pkgPath: "aosp/soong/generator",
     deps: [
         "blueprint",
         "blueprint-pathtools",
