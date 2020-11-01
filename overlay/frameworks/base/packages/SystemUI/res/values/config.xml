@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
  * Copyright (c) 2006, The Android Open Source Project
- * Copyright (c) 2020, P404 Project
+ * Copyright (c) 2020, Project 404
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,8 @@
 -->
 <resources>
 
-    <!-- The number of columns in the QuickSettings -->
-    <integer name="quick_settings_num_columns">4</integer>
-
-    <!-- Screenshot editing default activity.  Must handle ACTION_EDIT image/png intents.
-         Blank sends the user to the Chooser first.
-         This name is in the ComponentName flattened format (package/class)  -->
-    <string name="config_screenshotEditor" translatable="false">com.google.android.markup/com.google.android.markup.AnnotateActivity</string>
+    <!-- Alarm -->
+    <bool name="quick_settings_show_full_alarm">true</bool>
 
     <!-- Smart replies in notifications: Whether we disable the feature unless the app targets P -->
     <bool name="config_smart_replies_in_notifications_requires_targeting_p">false</bool>

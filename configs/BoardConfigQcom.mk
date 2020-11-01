@@ -1,108 +1,71 @@
-# Platform names
-MSMNILE := msmnile #SM8150
-MSMSTEPPE := sm6150
-TRINKET := trinket #SM6125
+# Copyright (C) 2020 Project 404
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-B_FAMILY := msm8226 msm8610 msm8974
-B64_FAMILY := msm8992 msm8994
-BR_FAMILY := msm8909 msm8916
-UM_3_18_FAMILY := msm8937 msm8953 msm8996
-UM_4_4_FAMILY := msm8998 sdm660
-UM_4_9_FAMILY := sdm845 sdm710
-UM_4_14_FAMILY := $(MSMNILE) $(MSMSTEPPE) $(TRINKET)
-UM_PLATFORMS := $(UM_3_18_FAMILY) $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY)
-
+# AV
 BOARD_USES_ADRENO := true
-
-# UM platforms no longer need this set on O+
-ifneq ($(filter $(B_FAMILY) $(B64_FAMILY) $(BR_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    TARGET_USES_QCOM_BSP := true
-endif
-
-# Tell HALs that we're compiling an AOSP build with an in-line kernel
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-
-ifneq ($(filter msm7x27a msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)
-    TARGET_USES_QCOM_BSP_LEGACY := true
-    # Enable legacy audio functions
-    ifeq ($(BOARD_USES_LEGACY_ALSA_AUDIO),true)
-        USE_CUSTOM_AUDIO_POLICY := 1
-    endif
-endif
-
-# Enable media extensions
-TARGET_USES_MEDIA_EXTENSIONS := true
-
-# Allow building audio encoders
+TARGET_USES_AOSP_FOR_AUDIO ?= false
 TARGET_USES_QCOM_MM_AUDIO := true
+TARGET_USES_ION := true
 
-# Enable color metadata for every UM platform
-ifneq ($(filter $(UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-    TARGET_USES_COLOR_METADATA := true
+# Enable Media Extensions for HAL1 on Legacy Devices
+ifeq ($(call is-board-platform-in-list, apq8084 msm8226 msm8909 msm8916 msm8937 msm8952 msm8953 msm8960 msm8974 msm8976 msm8992 msm8994 msm8996 msm8998 sdm660),true)
+  TARGET_USES_MEDIA_EXTENSIONS := true
 endif
 
-# Enable DRM PP driver on UM platforms that support it
-ifeq ($(call is-board-platform-in-list, $(UM_4_9_FAMILY) $(UM_4_14_FAMILY)),true)
-    TARGET_USES_DRM_PP := true
+# For pre-UM display and gps HAL
+ifeq ($(call is-board-platform-in-list, apq8084 msm8226 msm8610 msm8974 msm8992 msm8994 msm8909 msm8916 msm8952 msm8976),true)
+  TARGET_USES_QCOM_BSP := true
 endif
 
-# Mark GRALLOC_USAGE_HW_2D, GRALLOC_USAGE_EXTERNAL_DISP and GRALLOC_USAGE_PRIVATE_WFD as valid gralloc bits
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS ?= 0
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 10)
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 13)
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 21)
-
-# Mark GRALLOC_USAGE_PRIVATE_HEIF_VIDEO as valid gralloc bits on UM platforms that support it
-ifeq ($(call is-board-platform-in-list, $(UM_4_9_FAMILY) $(UM_4_14_FAMILY)),true)
-    TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS += | (1 << 27)
+# Power
+# Disable Binderized Power HAL by default for legacy targets.
+# Devices can still opt in by setting TARGET_USES_NON_LEGACY_POWERHAL in BoardConfig.mk.
+# Conversely, recent chips, such as sm8150 with an old vendor can opt out.
+ifneq ($(TARGET_PROVIDES_POWERHAL),true)
+ifneq ($(call is-board-platform-in-list, apq8084 msm8226 msm8909 msm8916 msm8937 msm8952 msm8953 msm8960 msm8974 msm8976 msm8992 msm8994 msm8996 msm8998 sdm660 sdm710 sdm845 trinket),true)
+TARGET_USES_NON_LEGACY_POWERHAL ?= true
+endif
 endif
 
-# List of targets that use master side content protection
-MASTER_SIDE_CP_TARGET_LIST := msm8996 $(UM_4_4_FAMILY) $(UM_4_9_FAMILY) $(UM_4_14_FAMILY)
+# SEPolicy
+# Boards can opt-out of QCOM sepolicy
+ifneq ($(TARGET_EXCLUDE_QCOM_SEPOLICY),true)
 
-ifneq ($(filter $(B_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(B_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8974
-else ifneq ($(filter $(B64_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(B64_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8994
-else ifneq ($(filter $(BR_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(BR_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8916
-else ifneq ($(filter $(UM_3_18_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_3_18_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8996
-    TARGET_USES_QCOM_UM_FAMILY := true
-    TARGET_USES_QCOM_UM_3_18_FAMILY := true
-else ifneq ($(filter $(UM_4_4_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_4_FAMILY)
-    QCOM_HARDWARE_VARIANT := msm8998
-    TARGET_USES_QCOM_UM_FAMILY := true
-    TARGET_USES_QCOM_UM_4_4_FAMILY := true
-else ifneq ($(filter $(UM_4_9_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_9_FAMILY)
-    QCOM_HARDWARE_VARIANT := sdm845
-    TARGET_USES_QCOM_UM_FAMILY := true
-    TARGET_USES_QCOM_UM_4_9_FAMILY := true
-else ifneq ($(filter $(UM_4_14_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-    MSM_VIDC_TARGET_LIST := $(UM_4_14_FAMILY)
-    QCOM_HARDWARE_VARIANT := sm8150
-   TARGET_USES_QCOM_UM_FAMILY := true
-    TARGET_USES_QCOM_UM_4_14_FAMILY := true
-else
-    MSM_VIDC_TARGET_LIST := $(TARGET_BOARD_PLATFORM)
-    QCOM_HARDWARE_VARIANT := $(TARGET_BOARD_PLATFORM)
+# Allow boards to use a different sepolicy
+ifeq ($(filter true,$(TARGET_USES_QCOM_LEGACY_PRE_UM_SEPOLICY) $(TARGET_USES_QCOM_LEGACY_UM_SEPOLICY) $(TARGET_USES_QCOM_LEGACY_SEPOLICY) $(TARGET_USES_QCOM_LATEST_SEPOLICY)),)
+
+    ifeq ($(call is-board-platform-in-list, apq8084 msm8226 msm8909 msm8916 msm8952 msm8960 msm8974 msm8976 msm8992 msm8994),true)
+        # Use QCOM legacy pre-UM SEPolicy by default for legacy pre-UM boards
+        TARGET_USES_QCOM_LEGACY_PRE_UM_SEPOLICY ?= true
+        SELINUX_IGNORE_NEVERALLOWS_ON_USER ?= true
+    else ifeq ($(call is-board-platform-in-list, msm8937 msm8953 msm8996 msm8998 sdm660),true)
+        # Use QCOM legacy UM SEPolicy by default for legacy UM boards
+        TARGET_USES_QCOM_LEGACY_UM_SEPOLICY ?= true
+    else ifeq ($(call is-board-platform-in-list, sdm845 sdm710),true)
+        # Use QCOM legacy SEPolicy by default for legacy boards
+        TARGET_USES_QCOM_LEGACY_SEPOLICY ?= true
+    else
+        # Use QCOM latest SEPolicy by default for latest boards
+        TARGET_USES_QCOM_LATEST_SEPOLICY ?= true
+    endif
+
+endif # Allow boards to use a different sepolicy
+
+# Enable latest sepolicy for legacy boards
+ifeq ($(TARGET_USES_QCOM_LEGACY_SEPOLICY),true)
+    # Use QCOM latest SEPolicy by default for latest boards
+    TARGET_USES_QCOM_LATEST_SEPOLICY ?= true
 endif
 
-# Allow a device to manually override which HALs it wants to use
-ifneq ($(OVERRIDE_QCOM_HARDWARE_VARIANT),)
-    QCOM_HARDWARE_VARIANT := $(OVERRIDE_QCOM_HARDWARE_VARIANT)
-endif
-
-PRODUCT_SOONG_NAMESPACES += \
-    hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
-
-# QCOM HW crypto
-ifeq ($(TARGET_HW_DISK_ENCRYPTION),true)
-    TARGET_CRYPTFS_HW_PATH ?= vendor/qcom/opensource/cryptfs_hw
-endif
+endif # Exclude QCOM SEPolicy

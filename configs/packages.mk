@@ -22,42 +22,60 @@ PRODUCT_PACKAGES += \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat \
-    ntfsfix \
-    ntfs-3g
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
+    mkfs.ntfs \
+    fsck.ntfs \
+    mount.ntfs \
+    7z \
+    bash \
+    bzip2 \
+    curl \
+    lib7z \
+    powertop \
+    pigz \
+    tinymix \
+    unrar \
+    unzip \
+    vim \
+    rsync \
+    zip
+
+# CAF Packages
+PRODUCT_PACKAGES := \
+    AccountAndSyncSettings \
+    DeskClock \
+    AlarmProvider \
+    Calculator \
+    Calendar \
+    Camera \
+    CellBroadcastReceiver \
+    CertInstaller \
+    DrmProvider \
+    Email \
+    Gallery2 \
+    LatinIME \
+    Music \
+    netutils-wrapper-1.0 \
+    Phone \
+    Provision \
+    Protips \
+    Settings \
+    Sync \
+    SystemUI \
+    Updater \
+    CalendarProvider \
+    SyncProvider \
+    SoundRecorder \
+    IM \
+    VoiceDialer \
+    SnapdragonGallery \
+    SnapdragonLauncher
 
 # 404 Packages
 PRODUCT_PACKAGES += \
     P404Launcher \
-    AbleMusic \
+    P404ThemesStub \
     Covers \
-    Longshot \
-    MarkupGoogle \
-    SettingsIntelligenceGooglePrebuilt \
-    ThemePicker \
-    TurboPrebuilt \
-    P404ThemesStub
-
-# 404 Overlays
-PRODUCT_PACKAGES += p404-overlays
-
-# Angle
-PRODUCT_PACKAGES += \
-    ANGLE
-
-# Device Personalization Services
-PRODUCT_PACKAGES += MatchmakerPrebuilt
-
-# FontOverlays
-PRODUCT_PACKAGES += \
-    FontGoogleSansOverlay
-
-# Offline charger
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    product_charger_res_images
-
-# Telephony
-PRODUCT_PACKAGES += \
-    messaging \
-    Stk \
-    CellBroadcastReceiver
+    ThemePicker

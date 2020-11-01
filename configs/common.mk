@@ -20,9 +20,6 @@ include vendor/404/configs/art.mk
 # Branding stuffs
 include vendor/404/configs/branding.mk
 
-# Fonts
-include vendor/404/configs/fonts.mk
-
 # Packages
 include vendor/404/configs/packages.mk
 
@@ -32,9 +29,6 @@ include vendor/404/configs/props.mk
 # 404 Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
-    vendor/404/configs/permissions/privapp-permissions-p404-system.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-p404.xml \
-    vendor/404/configs/permissions/privapp-permissions-p404-product.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/permissions/privapp-permissions-p404.xml \
-    vendor/404/configs/permissions/privapp-permissions-elgoog.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-elgoog.xml
 
 # Android Beam
 PRODUCT_COPY_FILES += \
@@ -43,6 +37,19 @@ PRODUCT_COPY_FILES += \
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
     vendor/404/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
+
+# Backup Tool
+PRODUCT_COPY_FILES += \
+    vendor/404/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/404/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/404/prebuilt/common/bin/50-base.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-base.sh
+
+ifneq ($(AB_OTA_PARTITIONS),)
+PRODUCT_COPY_FILES += \
+    vendor/404/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/404/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/404/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+endif
 
 # Bootanimation
 ifeq ($(TARGET_BOOT_ANIMATION_RES),1080)
@@ -61,29 +68,44 @@ else
         vendor/404/prebuilt/bootanimation/1080.zip:$(TARGET_COPY_OUT_PRODUCT)/media/bootanimation.zip
 endif
 
-# Use ccache
-USE_CCACHE := true
-USE_SYSTEM_CCACHE := true
-ifeq ($(filter-out true,$(USE_CCACHE)),)
-  ifeq ($(filter-out true,$(USE_SYSTEM_CCACHE)),)
-    CCACHE_EXEC := $(shell which ccache)
-  else
-    CCACHE_EXEC := prebuilts/build-tools/linux-x86/bin/ccache
-  endif
-endif
-
 # Common overlays
 DEVICE_PACKAGE_OVERLAYS += vendor/404/overlay
 
-# Markup Google
-PRODUCT_COPY_FILES += \
-    vendor/404/prebuilt/lib/libsketchology_native.so:$(TARGET_COPY_OUT_SYSTEM)/lib/libsketchology_native.so \
-    vendor/404/prebuilt/lib64/libsketchology_native.so:$(TARGET_COPY_OUT_SYSTEM)/lib64/libsketchology_native.so
+# Recommend using the non debug dexpreopter
+USE_DEX2OAT_DEBUG ?= false
 
-# Turbo
+# CAF Common Flags :
+PRODUCT_VENDOR_MOVE_ENABLED := true
+DISABLE_EAP_PROXY := true
+
+# Framework detect libs
+PRODUCT_PACKAGES += libvndfwk_detect_jni.qti
+PRODUCT_PACKAGES += libqti_vndfwk_detect
+PRODUCT_PACKAGES += libvndfwk_detect_jni.qti.vendor
+PRODUCT_PACKAGES += libqti_vndfwk_detect.vendor
+
+# NameSpaces
+PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
+PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
+
+# QCOM
+# QCOM
+include vendor/404/configs/utils.mk
+# Include Common Qualcomm Device Tree on Qualcomm Boards
+$(call inherit-product-if-exists, device/qcom/common/common.mk)
+
+# QCOM Vendor
+-include vendor/qcom/defs/board-defs/system/*.mk
+-include vendor/qcom/defs/board-defs/vendor/*.mk
+$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
+$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
+
+# Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
-    vendor/404/configs/permissions/privapp-permissions-turbo.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-turbo.xml \
-    vendor/404/configs/sysconfig/turbo.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/turbo.xml
+    vendor/404/prebuilt/common/etc/sensitive_pn.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sensitive_pn.xml
+
+# Telephony
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # World APN list
 PRODUCT_COPY_FILES += \

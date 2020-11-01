@@ -1,4 +1,4 @@
-PATH_OVERRIDE_SOONG := $(shell echo $(TOOLS_PATH_OVERRIDE) | sed -e 's|$$|$$$$|g')
+PATH_OVERRIDE_SOONG := $(shell echo $(TOOLS_PATH_OVERRIDE))
 
 # Add variables that we wish to make available to soong here.
 EXPORT_TO_SOONG := \
@@ -13,8 +13,6 @@ EXPORT_TO_SOONG := \
     TARGET_KERNEL_HEADERS
 
 # Setup SOONG_CONFIG_* vars to export the vars listed above.
-# Documentation here:
-# https://github.com/LineageOS/android_build_soong/commit/8328367c44085b948c003116c0ed74a047237a69
 
 SOONG_CONFIG_NAMESPACES += p404VarsPlugin
 
