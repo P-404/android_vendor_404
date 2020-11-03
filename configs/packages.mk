@@ -80,6 +80,10 @@ PRODUCT_PACKAGES += \
     Covers \
     ThemePicker
 
+# SystemUI plugins
+PRODUCT_PACKAGES += \
+    QuickAccessWallet \
+
 # Overlays
 PRODUCT_PACKAGES += \
     GesturalNavigationOverlayLong \
