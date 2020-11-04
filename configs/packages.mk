@@ -56,6 +56,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     QuickAccessWallet
 
+
+# Config
+PRODUCT_PACKAGES += \
+    SimpleDeviceConfig
+
 # Framework detect libs
 PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
