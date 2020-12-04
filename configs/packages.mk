@@ -42,37 +42,6 @@ PRODUCT_PACKAGES += \
     rsync \
     zip
 
-# CAF Packages
-PRODUCT_PACKAGES := \
-    AccountAndSyncSettings \
-    DeskClock \
-    AlarmProvider \
-    Calculator \
-    Calendar \
-    Camera \
-    CellBroadcastReceiver \
-    CertInstaller \
-    DrmProvider \
-    Email \
-    Gallery2 \
-    LatinIME \
-    Music \
-    netutils-wrapper-1.0 \
-    Phone \
-    Provision \
-    Protips \
-    Settings \
-    Sync \
-    SystemUI \
-    Updater \
-    CalendarProvider \
-    SyncProvider \
-    SoundRecorder \
-    IM \
-    VoiceDialer \
-    SnapdragonGallery \
-    SnapdragonLauncher
-
 # 404 Packages
 PRODUCT_PACKAGES += \
     P404Launcher \
