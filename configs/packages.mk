@@ -58,3 +58,6 @@ PRODUCT_PACKAGES += \
     GesturalNavigationOverlayLong \
     GesturalNavigationOverlayMedium \
     GesturalNavigationOverlayHidden
+
+# Volume Panel
+-include packages/apps/Plugins/plugins.mk
