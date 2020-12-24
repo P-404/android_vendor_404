@@ -1,0 +1,39 @@
+android_app_import {
+    name: "AbleMusic",
+
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+
+    compile_multilib: "both",
+    apk: "app/AbleMusic.apk",
+
+}
+
+android_app_import {
+    name: "404Clock",
+
+    overrides: ["DeskClock"],
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+
+    compile_multilib: "both",
+    apk: "app/404Clock.apk",
+
+}
+
+android_app_import {
+    name: "LiveWallpaper",
+
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+
+    compile_multilib: "both",
+    apk: "app/LiveWallpaper.apk",
+
+}

@@ -47,7 +47,10 @@ PRODUCT_PACKAGES += \
     P404Launcher \
     P404ThemesStub \
     Covers \
-    ThemePicker
+    ThemePicker \
+    404Clock \
+    AbleMusic \
+    LiveWallpaper
 
 # SystemUI plugins
 PRODUCT_PACKAGES += \
