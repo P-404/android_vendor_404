@@ -49,8 +49,7 @@ PRODUCT_PACKAGES += \
     Covers \
     ThemePicker \
     404Clock \
-    AbleMusic \
-    LiveWallpaper
+    AbleMusic
 
 # SystemUI plugins
 PRODUCT_PACKAGES += \
