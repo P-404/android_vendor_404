@@ -105,8 +105,19 @@ function setup_vendor() {
         VENDOR_RADIO_STATE=0
     fi
 
+    export BINARIES_LOCATION="$P404_ROOT"/prebuilts/tools-p404/${HOST}-x86/bin
+
+    for version in 0_8 0_9; do
+        export PATCHELF_${version}="$BINARIES_LOCATION"/patchelf-"${version}"
+    done
+
+    if [ -z "$PATCHELF_VERSION" ]; then
+        export PATCHELF_VERSION=0_9
+    fi
+
     if [ -z "$PATCHELF" ]; then
-        export PATCHELF="$P404_ROOT"/prebuilts/tools-p404/${HOST}-x86/bin/patchelf
+        local patchelf_variable="PATCHELF_${PATCHELF_VERSION}"
+        export PATCHELF=${!patchelf_variable}
     fi
 }
 
