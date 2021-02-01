@@ -17,5 +17,5 @@
 -->
 
 <resources>
-    <color name="global_actions_grid_background">#ff151618</color>
+    <color name="global_actions_grid_background">#ff000000</color>
 </resources>
