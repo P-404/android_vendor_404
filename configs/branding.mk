@@ -36,4 +36,5 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.404.device=$(P404_BUILD) \
     ro.404.display.version=$(P404_DISPLAY_VERSION) \
     ro.404.releasetype=$(P404_BUILDTYPE) \
-    ro.404.build=$(P404_BUILD_NUMBER)
+    ro.404.build=$(P404_BUILD_NUMBER) \
+    ro.caf.tag=$(shell bash vendor/404/configs/caf-tag.sh)
