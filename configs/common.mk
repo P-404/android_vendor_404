@@ -138,3 +138,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     iorapd.perfetto.enable=true \
     iorapd.readahead.enable=true \
     ro.iorapd.enable=true
+
+# Treble
+# Enable ALLOW_MISSING_DEPENDENCIES on Vendorless Builds
+ifeq ($(BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE),)
+  ALLOW_MISSING_DEPENDENCIES := true
+endif
