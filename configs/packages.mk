@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
     404Clock \
     AbleMusic
 
+# Angle
+PRODUCT_PACKAGES += \
+    ANGLE
+
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet \
