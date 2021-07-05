@@ -16,16 +16,17 @@
 # Override undesired Google defaults
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     keyguard.no_require_sim=true \
+    dalvik.vm.debug.alloc=0 \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
-    ro.com.android.wifi-watchlist=GoogleGuest \
     ro.error.receiver.system.apps=com.google.android.gms \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
     ro.boot.vendor.overlay.theme=com.android.internal.systemui.navbar.gestural \
-    ro.setupwizard.require_network=any \
-    ro.setupwizard.mode=OPTIONAL \
-    ro.opa.eligible_device=true
+    ro.opa.eligible_device=true \
+    ro.setupwizard.enterprise_mode=1 \
+    persist.sys.disable_rescue=true \
+    ro.setupwizard.rotation_locked=true
 
 # GMS-Client
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
