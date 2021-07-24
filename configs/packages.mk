@@ -49,7 +49,8 @@ PRODUCT_PACKAGES += \
     Covers \
     ThemePicker \
     404Clock \
-    AbleMusic
+    AbleMusic \
+    Updater
 
 # Angle
 PRODUCT_PACKAGES += \

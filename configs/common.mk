@@ -139,6 +139,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     iorapd.readahead.enable=true \
     ro.iorapd.enable=true
 
+# Copy all updater-specific init rc files
+$(foreach f,$(wildcard vendor/404/prebuilt/etc/init/*.rc),\
+	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
+
 # Treble
 # Enable ALLOW_MISSING_DEPENDENCIES on Vendorless Builds
 ifeq ($(BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE),)
