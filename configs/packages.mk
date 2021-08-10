@@ -50,7 +50,8 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     404Clock \
     AbleMusic \
-    Updater
+    Updater \
+    SoftAPManager
 
 # Angle
 PRODUCT_PACKAGES += \
