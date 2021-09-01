@@ -5,6 +5,7 @@ android_app_import {
     dex_preopt: {
         enabled: false,
     },
+    overrides: ["SnapdragonMusic"],
 
     compile_multilib: "both",
     apk: "app/AbleMusic.apk",
