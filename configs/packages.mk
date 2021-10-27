@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 P404 Project
+# Copyright (C) 2020-2021 Project 404
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -50,22 +50,8 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     404Clock \
     AbleMusic \
-    Updater \
-    SoftAPManager
-
-# Angle
-PRODUCT_PACKAGES += \
-    ANGLE
+    Updater
 
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet \
-
-# Overlays
-PRODUCT_PACKAGES += \
-    GesturalNavigationOverlayLong \
-    GesturalNavigationOverlayMedium \
-    GesturalNavigationOverlayHidden
-
-# Volume Panel
--include packages/apps/Plugins/plugins.mk

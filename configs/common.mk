@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020 P404 Project
+# Copyright (C) 2020-2021 Project 404
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -132,12 +132,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # World APN list
 PRODUCT_COPY_FILES += \
     vendor/404/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
-
-# IORap
-PRODUCT_PROPERTY_OVERRIDES += \
-    iorapd.perfetto.enable=true \
-    iorapd.readahead.enable=true \
-    ro.iorapd.enable=true
 
 # Copy all updater-specific init rc files
 $(foreach f,$(wildcard vendor/404/prebuilt/etc/init/*.rc),\
