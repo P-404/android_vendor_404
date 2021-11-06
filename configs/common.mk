@@ -109,6 +109,9 @@ $(call inherit-product-if-exists, device/qcom/common/common.mk)
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
 
+# Include definitions for Snapdragon Clang
+$(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
+
 # Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
     vendor/404/prebuilt/common/etc/sensitive_pn.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sensitive_pn.xml
