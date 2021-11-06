@@ -78,12 +78,6 @@ USE_DEX2OAT_DEBUG ?= false
 PRODUCT_VENDOR_MOVE_ENABLED := true
 DISABLE_EAP_PROXY := true
 
-# Framework detect libs
-PRODUCT_PACKAGES += libvndfwk_detect_jni.qti
-PRODUCT_PACKAGES += libqti_vndfwk_detect
-PRODUCT_PACKAGES += libvndfwk_detect_jni.qti.vendor
-PRODUCT_PACKAGES += libqti_vndfwk_detect.vendor
-
 # NameSpaces
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf

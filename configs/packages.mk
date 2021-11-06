@@ -54,4 +54,11 @@ PRODUCT_PACKAGES += \
 
 # SystemUI plugins
 PRODUCT_PACKAGES += \
-    QuickAccessWallet \
+    QuickAccessWallet
+
+# Framework detect libs
+PRODUCT_PACKAGES += \
+    libvndfwk_detect_jni.qti \
+    libqti_vndfwk_detect \
+    libvndfwk_detect_jni.qti.vendor \
+    libqti_vndfwk_detect.vendor
