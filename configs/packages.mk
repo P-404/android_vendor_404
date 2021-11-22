@@ -45,10 +45,8 @@ PRODUCT_PACKAGES += \
 # 404 Packages
 PRODUCT_PACKAGES += \
     P404Launcher \
-    P404ThemesStub \
     Covers \
     ThemePicker \
-    404Clock \
     AbleMusic \
     Updater
 
