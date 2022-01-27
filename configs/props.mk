@@ -63,3 +63,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # One Handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true \
+
+# Set default ringtone, notification and alarm
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.ringtone=Your_new_adventure.ogg \
+    ro.config.notification_sound=Eureka.ogg \
+    ro.config.alarm_alert=Fresh_start.ogg
