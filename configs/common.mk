@@ -107,6 +107,10 @@ PRODUCT_COPY_FILES += \
 # Telephony
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
+# priv-app permissions
+PRODUCT_COPY_FILES += \
+   vendor/404/prebuilt/common/etc/permissions/privapp-permissions-google.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-google.xml
+
 # World APN list
 PRODUCT_COPY_FILES += \
     vendor/404/prebuilt/etc/apns-conf.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/apns-conf.xml
