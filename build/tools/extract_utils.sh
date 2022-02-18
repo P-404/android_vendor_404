@@ -495,11 +495,10 @@ function write_blueprint_packages() {
         elif [ "$CLASS" = "EXECUTABLES" ]; then
             if [ "$EXTENSION" = "sh" ]; then
                 printf 'sh_binary {\n'
-                printf '\tname: "%s",\n' "$PKGNAME"
             else
                 printf 'cc_prebuilt_binary {\n'
-                printf '\tname: "%s",\n' "$BASENAME"
             fi
+            printf '\tname: "%s",\n' "$PKGNAME"
             printf '\towner: "%s",\n' "$VENDOR"
             if [ "$ARGS" = "rootfs" ]; then
                 SRC="$SRC/rootfs"
