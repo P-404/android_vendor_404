@@ -443,7 +443,6 @@ function write_blueprint_packages() {
                 printf '\tcompile_multilib: "%s",\n' "$EXTRA"
             fi
             printf '\tcheck_elf_files: false,\n'
-            printf '\tprefer: true,\n'
         elif [ "$CLASS" = "APEX" ]; then
             printf 'prebuilt_apex {\n'
             printf '\tname: "%s",\n' "$PKGNAME"
@@ -500,8 +499,8 @@ function write_blueprint_packages() {
             else
                 printf 'cc_prebuilt_binary {\n'
                 printf '\tname: "%s",\n' "$BASENAME"
-                printf '\towner: "%s",\n' "$VENDOR"
             fi
+            printf '\towner: "%s",\n' "$VENDOR"
             if [ "$ARGS" = "rootfs" ]; then
                 SRC="$SRC/rootfs"
                 if [ "$EXTRA" = "sbin" ]; then
@@ -513,12 +512,9 @@ function write_blueprint_packages() {
             else
                 SRC="$SRC/bin"
             fi
+            printf '\tsrcs: ["%s/%s"],\n' "$SRC" "$FILE"
             if [ "$EXTENSION" != "sh" ]; then
-                printf '\tsrcs: ["%s/%s"],\n' "$SRC" "$FILE"
                 printf '\tcheck_elf_files: false,\n'
-                printf '\tprefer: true,\n'
-            else
-                printf '\tsrc: "%s/%s",\n' "$SRC" "$FILE"
             fi
             unset EXTENSION
         else
@@ -538,6 +534,9 @@ function write_blueprint_packages() {
             if [ "$DIRNAME" != "." ]; then
                 printf '\tsub_dir: "%s",\n' "$DIRNAME"
             fi
+        fi
+        if [ "$CLASS" = "SHARED_LIBRARIES" ] || [ "$CLASS" = "EXECUTABLES" ] ; then
+            printf '\tprefer: true,\n'
         fi
         if [ "$EXTRA" = "priv-app" ]; then
             printf '\tprivileged: true,\n'
