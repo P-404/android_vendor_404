@@ -58,3 +58,7 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.ringtone=Your_new_adventure.ogg \
     ro.config.notification_sound=Eureka.ogg \
     ro.config.alarm_alert=Fresh_start.ogg
+
+# Disable remote keyguard animation
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.wm.enable_remote_keyguard_animation=0
