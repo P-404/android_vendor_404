@@ -91,7 +91,6 @@ include vendor/404/configs/utils.mk
 $(call inherit-product-if-exists, device/qcom/common/common.mk)
 
 # QCOM Vendor
--include vendor/qcom/defs/board-defs/system/*.mk
 -include vendor/qcom/defs/board-defs/vendor/*.mk
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
