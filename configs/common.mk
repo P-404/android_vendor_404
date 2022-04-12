@@ -26,10 +26,6 @@ include vendor/404/configs/packages.mk
 # Props
 include vendor/404/configs/props.mk
 
-# 404 Permissions
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml \
-
 # Android Beam
 PRODUCT_COPY_FILES += \
     vendor/404/configs/permissions/android.software.nfc.beam.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.software.nfc.beam.xml
