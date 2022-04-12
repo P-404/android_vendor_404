@@ -15,7 +15,6 @@
 
 # Override undesired Google defaults
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    keyguard.no_require_sim=true \
     dalvik.vm.debug.alloc=0 \
     ro.com.android.dateformat=MM-dd-yyyy \
     ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
