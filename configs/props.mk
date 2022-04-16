@@ -37,9 +37,9 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 endif
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=1
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=0
 else
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += ro.adb.secure=1
 endif
 
 # Disable async MTE on system_server
