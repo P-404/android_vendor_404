@@ -48,7 +48,8 @@ PRODUCT_PACKAGES += \
     Covers \
     ThemePicker \
     AbleMusic \
-    Updater
+    Updater \
+    Camera
 
 # SystemUI plugins
 PRODUCT_PACKAGES += \
