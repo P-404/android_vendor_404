@@ -86,11 +86,6 @@ include vendor/404/configs/utils.mk
 # Include Common Qualcomm Device Tree on Qualcomm Boards
 $(call inherit-product-if-exists, device/qcom/common/common.mk)
 
-# QCOM Vendor
--include vendor/qcom/defs/board-defs/vendor/*.mk
-$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
-$(call inherit-product-if-exists, vendor/qcom/defs/product-defs/vendor/*.mk)
-
 # Include definitions for Snapdragon Clang
 $(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
 
