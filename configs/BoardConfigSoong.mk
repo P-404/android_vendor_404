@@ -31,6 +31,7 @@ SOONG_CONFIG_aospGlobalVars += \
     target_ld_shim_libs \
     target_process_sdk_version_override \
     target_surfaceflinger_udfps_lib
+    has_memfd_backport \
 
 # Set default values
 TARGET_INIT_VENDOR_LIB ?= vendor_init
@@ -41,3 +42,4 @@ SOONG_CONFIG_aospGlobalVars_target_init_vendor_lib := $(TARGET_INIT_VENDOR_LIB)
 SOONG_CONFIG_aospGlobalVars_target_ld_shim_libs := $(subst $(space),:,$(TARGET_LD_SHIM_LIBS))
 SOONG_CONFIG_aospGlobalVars_target_process_sdk_version_override := $(TARGET_PROCESS_SDK_VERSION_OVERRIDE)
 SOONG_CONFIG_aospGlobalVars_target_surfaceflinger_udfps_lib := $(TARGET_SURFACEFLINGER_UDFPS_LIB)
+SOONG_CONFIG_aospGlobalVars_has_memfd_backport := $(TARGET_HAS_MEMFD_BACKPORT)
