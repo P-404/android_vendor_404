@@ -30,8 +30,8 @@ SOONG_CONFIG_aospGlobalVars += \
     target_init_vendor_lib \
     target_ld_shim_libs \
     target_process_sdk_version_override \
-    target_surfaceflinger_udfps_lib
-    has_memfd_backport \
+    target_surfaceflinger_udfps_lib \
+    has_memfd_backport 
 
 # Set default values
 TARGET_INIT_VENDOR_LIB ?= vendor_init
