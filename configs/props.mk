@@ -54,10 +54,12 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true \
 
 # Set default ringtone, notification and alarm
+ifneq ($(WITH_GAPPS),true)
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.config.ringtone=Your_new_adventure.ogg \
     ro.config.notification_sound=Eureka.ogg \
     ro.config.alarm_alert=Fresh_start.ogg
+endif
 
 # Disable remote keyguard animation
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
