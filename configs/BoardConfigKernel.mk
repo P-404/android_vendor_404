@@ -1,4 +1,4 @@
-# Copyright (C) 2018-2019 The LineageOS Project
+# Copyright (C) 2018-2022 The LineageOS Project
 # Copyright (C) 2020-2021 Project 404
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,11 @@
 #                                                      aarch64-linux-android- for arm64
 #                                                      x86_64-linux-android- for x86
 #
-#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to false
+#   TARGET_KERNEL_CLANG_COMPILE        = Compile kernel with clang, defaults to true
+#   TARGET_KERNEL_VERSION              = Reported kernel version in top level kernel
+#                                        makefile. Can be overriden in device trees
+#                                        in the event of prebuilt kernel.
+#
 #   TARGET_KERNEL_NEW_GCC_COMPILE      = Compile kernel with newer version GCC, defaults to false
 #
 #   KERNEL_TOOLCHAIN_PREFIX            = Overrides TARGET_KERNEL_CROSS_COMPILE_PREFIX,
@@ -53,6 +57,10 @@ endif
 
 TARGET_KERNEL_HEADERS ?= $(TARGET_KERNEL_SOURCE)
 KERNEL_SD_LLVM_SUPPORT ?= true
+
+KERNEL_VERSION := $(shell grep "^VERSION = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
+KERNEL_PATCHLEVEL := $(shell grep "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
+TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
 # Tell HALs that we're compiling an AOSP build with an in-line kernel
 TARGET_COMPILE_WITH_MSM_KERNEL ?= true
@@ -159,6 +167,13 @@ KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_OS)-x86/bin/make
 # Set the full path to the clang command
 KERNEL_MAKE_FLAGS += HOSTCC=$(CLANG_PREBUILTS)/bin/clang
 KERNEL_MAKE_FLAGS += HOSTCXX=$(CLANG_PREBUILTS)/bin/clang++
+
+# Use LLVM's substitutes for GNU binutils if compatible kernel version.
+ifneq ($(TARGET_KERNEL_CLANG_COMPILE), false)
+ifneq (,$(filter 5.4, $(TARGET_KERNEL_VERSION)))
+    KERNEL_MAKE_FLAGS += LLVM=1 LLVM_IAS=1
+endif
+endif
 
 # Since Linux 4.16, flex and bison are required
 KERNEL_MAKE_FLAGS += LEX=$(BUILD_TOP)/prebuilts/build-tools/$(HOST_OS)-x86/bin/flex
