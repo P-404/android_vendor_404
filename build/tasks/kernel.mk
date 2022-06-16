@@ -21,7 +21,10 @@
 #
 # These config vars are usually set in BoardConfig.mk:
 #
-#   TARGET_KERNEL_CONFIG               = Kernel defconfig
+#   TARGET_KERNEL_ADDITIONAL_FLAGS     = Additional make flags, optional
+#   TARGET_KERNEL_CONFIG               = List of kernel defconfigs, first one being the base one,
+#                                          while all the others are fragments that will be merged
+#                                          to main one in .config.
 #   TARGET_KERNEL_VARIANT_CONFIG       = Variant defconfig, optional
 #   TARGET_KERNEL_SELINUX_CONFIG       = SELinux defconfig, optional
 #   TARGET_KERNEL_ADDITIONAL_CONFIG    = Additional defconfig, optional
@@ -232,6 +235,10 @@ KERNEL_MAKE_FLAGS += DTC=$(KERNEL_BUILD_OUT_PREFIX)$(DTC)
 
 ifeq (true,$(filter true, $(TARGET_NEEDS_DTBOIMAGE) $(BOARD_KERNEL_SEPARATED_DTBO)))
     KERNEL_MAKE_FLAGS += DTC_EXT=$(KERNEL_BUILD_OUT_PREFIX)$(DTC)
+endif
+
+ifneq ($(TARGET_KERNEL_ADDITIONAL_FLAGS),)
+    KERNEL_MAKE_FLAGS += $(TARGET_KERNEL_ADDITIONAL_FLAGS)
 endif
 
 # Internal implementation of make-kernel-target
