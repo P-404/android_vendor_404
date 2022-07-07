@@ -57,8 +57,8 @@ endif
 TARGET_KERNEL_HEADERS ?= $(TARGET_KERNEL_SOURCE)
 KERNEL_SD_LLVM_SUPPORT ?= true
 
-KERNEL_VERSION := $(shell grep "^VERSION = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
-KERNEL_PATCHLEVEL := $(shell grep "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
+KERNEL_VERSION := $(shell grep -s "^VERSION = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
+KERNEL_PATCHLEVEL := $(shell grep -s "^PATCHLEVEL = " $(TARGET_KERNEL_SOURCE)/Makefile | awk '{ print $$3 }')
 TARGET_KERNEL_VERSION ?= $(shell echo $(KERNEL_VERSION)"."$(KERNEL_PATCHLEVEL))
 
 # Tell HALs that we're compiling an AOSP build with an in-line kernel
