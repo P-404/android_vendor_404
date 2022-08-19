@@ -1153,7 +1153,9 @@ function get_file() {
 
     if [ "$SRC" = "adb" ]; then
         # try to pull
-        adb pull "$1" "$2" >/dev/null 2>&1 && return 0
+        adb pull "$1"           "$2" >/dev/null 2>&1 && return 0
+        adb pull "${1#/system}" "$2" >/dev/null 2>&1 && return 0
+        adb pull "system/$1"    "$2" >/dev/null 2>&1 && return 0
 
         return 1
     else
