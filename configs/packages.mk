@@ -16,7 +16,8 @@
 
 # Charger
 PRODUCT_PACKAGES += \
-    p404_charger
+    p404_charger \
+    p404_charger_vendor
 
 # Filesystems tools
 PRODUCT_PACKAGES += \
