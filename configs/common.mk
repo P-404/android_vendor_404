@@ -88,9 +88,6 @@ USE_DEX2OAT_DEBUG ?= false
 PRODUCT_VENDOR_MOVE_ENABLED := true
 DISABLE_EAP_PROXY := true
 
-# Lawnicons
-$(call inherit-product-if-exists, vendor/lawnicons/overlay.mk)
-
 # NameSpaces
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/packages/apps/Bluetooth
 PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/commonsys/system/bt/conf
