@@ -21,15 +21,15 @@ include vendor/404/configs/art.mk
 include vendor/404/configs/branding.mk
 
 # Face Unlock
-TARGET_FACE_UNLOCK_SUPPORTED ?= true
-ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
-PRODUCT_PACKAGES += \
-    FaceUnlockService
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
-endif
+#TARGET_FACE_UNLOCK_SUPPORTED ?= true
+#ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
+#PRODUCT_PACKAGES += \
+#    FaceUnlockService
+#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+#    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
+#PRODUCT_COPY_FILES += \
+#    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
+#endif
 
 # Fonts
 include vendor/404/configs/fonts.mk
@@ -98,7 +98,7 @@ include vendor/404/configs/utils.mk
 $(call inherit-product-if-exists, device/qcom/common/common.mk)
 
 # Include definitions for Snapdragon Clang
-$(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
+#$(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
 
 # Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
