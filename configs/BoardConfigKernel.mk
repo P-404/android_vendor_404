@@ -57,7 +57,7 @@ KERNEL_SD_LLVM_SUPPORT ?= true
 # Tell HALs that we're compiling an AOSP build with an in-line kernel
 TARGET_COMPILE_WITH_MSM_KERNEL ?= true
 
-CLANG_PREBUILTS := $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/clang-r416183b
+CLANG_PREBUILTS := $(BUILD_TOP)/prebuilts/clang/host/$(HOST_OS)-x86/clang-r450784d
 GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86
 ifeq ($(TARGET_KERNEL_NEW_GCC_COMPILE),true)
     ifeq ($(TARGET_KERNEL_CLANG_COMPILE),true)
