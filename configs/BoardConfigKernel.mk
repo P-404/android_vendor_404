@@ -32,5 +32,5 @@ endif
 # set the dependencies on prebuilt_dtbo.img based on definition of
 # BOARD_PREBUILT_DTBOIMAGE
 ifneq ($(strip $(BOARD_KERNEL_SEPARATED_DTBO)),)
-BOARD_PREBUILT_DTBOIMAGE := $(PRODUCT_OUT)/prebuilt_dtbo.img
+BOARD_PREBUILT_DTBOIMAGE ?= $(PRODUCT_OUT)/prebuilt_dtbo.img
 endif
