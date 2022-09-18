@@ -27,6 +27,9 @@ ifneq (,$(filter 3.18 4.4 4.9, $(TARGET_KERNEL_VERSION)))
 KERNEL_SD_LLVM_SUPPORT ?= true
 endif
 
+# Qualcomm kernel.
+TARGET_COMPILE_WITH_MSM_KERNEL := true
+
 # Defining BOARD_PREBUILT_DTBOIMAGE here as AndroidBoardCommon.mk
 # is included before build/core/Makefile, where it is required to
 # set the dependencies on prebuilt_dtbo.img based on definition of
