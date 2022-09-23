@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb24fad8_be7a5282",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000001
+      },
+      "writtenOn": "2022-09-23T12:54:47Z",
+      "side": 1,
+      "message": "also move it to overlays repo not in vendor ",
+      "revId": "9e9784eafc2bfde3e742e7a073ef8cd158eade4d",
+      "serverId": "c85314f7-38ff-4b73-93db-2637f3516207"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5dabbdc_671b6380",
