@@ -79,7 +79,7 @@ else
 endif
 
 # Common overlays
-DEVICE_PACKAGE_OVERLAYS += vendor/overlays/404/overlay
+PRODUCT_PACKAGE_OVERLAYS += vendor/overlays/404/overlay
 
 # Recommend using the non debug dexpreopter
 USE_DEX2OAT_DEBUG ?= false
