@@ -145,8 +145,8 @@ def fetch_query(remote_url, query):
         raise Exception('Gerrit URL should be in the form http[s]://hostname/ or ssh://[user@]host[:port]')
 
 if __name__ == '__main__':
-    # Default to P404OS Gerrit
-    default_gerrit = 'http://gerrit.p404project.co'
+    # Default to Project 404 Gerrit
+    default_gerrit = 'https://gerrit.project404.xyz'
 
     parser = argparse.ArgumentParser(formatter_class=argparse.RawDescriptionHelpFormatter, description=textwrap.dedent('''\
         repopick.py is a utility to simplify the process of cherry picking
@@ -431,9 +431,9 @@ if __name__ == '__main__':
                 print('Trying to fetch the change from GitHub')
 
             if args.pull:
-                cmd = ['git pull --no-edit p404', item['fetch'][method]['ref']]
+                cmd = ['git pull --no-edit 404', item['fetch'][method]['ref']]
             else:
-                cmd = ['git fetch p404', item['fetch'][method]['ref']]
+                cmd = ['git fetch 404', item['fetch'][method]['ref']]
             if args.quiet:
                 cmd.append('--quiet')
             else:
