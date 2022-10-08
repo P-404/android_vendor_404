@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2020-2021 Project 404
+# Copyright (C) 2020-2022 Project 404
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,17 +19,6 @@ include vendor/404/configs/art.mk
 
 # Branding stuffs
 include vendor/404/configs/branding.mk
-
-# Face Unlock
-#TARGET_FACE_UNLOCK_SUPPORTED ?= true
-#ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
-#PRODUCT_PACKAGES += \
-#    FaceUnlockService
-#PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-#    ro.face_unlock_service.enabled=$(TARGET_FACE_UNLOCK_SUPPORTED)
-#PRODUCT_COPY_FILES += \
-#    frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
-#endif
 
 # Fonts
 include vendor/404/configs/fonts.mk
@@ -81,9 +70,6 @@ endif
 # Common overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/overlays/404/overlay
 
-# Recommend using the non debug dexpreopter
-USE_DEX2OAT_DEBUG ?= false
-
 # CAF Common Flags :
 PRODUCT_VENDOR_MOVE_ENABLED := true
 DISABLE_EAP_PROXY := true
@@ -93,7 +79,7 @@ DISABLE_EAP_PROXY := true
 $(call inherit-product-if-exists, device/qcom/common/common.mk)
 
 # Include definitions for Snapdragon Clang
-#$(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
+$(call inherit-product, vendor/qcom/sdclang/config/SnapdragonClang.mk)
 
 # Sensitive Phone Numbers list
 PRODUCT_COPY_FILES += \
@@ -113,10 +99,4 @@ $(foreach f,$(wildcard vendor/404/prebuilt/etc/init/*.rc),\
 # Gapps
 ifeq ($(WITH_GAPPS),true)
     $(call inherit-product, vendor/gms/products/gms.mk)
-endif
-
-# Treble
-# Enable ALLOW_MISSING_DEPENDENCIES on Vendorless Builds
-ifeq ($(BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE),)
-  ALLOW_MISSING_DEPENDENCIES := true
 endif
