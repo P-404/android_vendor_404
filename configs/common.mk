@@ -68,6 +68,7 @@ else
 endif
 
 # Common overlays
+include vendor/overlays/404/packages.mk
 PRODUCT_PACKAGE_OVERLAYS += vendor/overlays/404/overlay
 
 # CAF Common Flags :
