@@ -28,11 +28,11 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-local_manifest = ".repo/manifests/404.xml"
+local_manifest = ".repo/manifests/p404.xml"
 default_revision = "tokui"
 default_dependencies = "p404.dependencies"
 org_manifest = "404"  # leave empty if org is provided in manifest
-org_display = "P-404"  # needed for displaying
+org_display = "P404-Devices"  # needed for displaying
 
 default_manifest = ".repo/manifests/default.xml"
 p404_manifest = ".repo/manifests/404.xml"
@@ -167,8 +167,8 @@ def add_to_manifest(repos, fallback_branch=None):
             continue
 
         existing_m_project = None
-        if exists_in_tree(p404m, repo_path) != None:
-            existing_m_project = exists_in_tree(p404m, repo_path)
+        if exists_in_tree(p404, repo_path) != None:
+            existing_m_project = exists_in_tree(p404, repo_path)
         elif exists_in_tree(mlm, repo_path) != None:
             existing_m_project = exists_in_tree(mlm, repo_path)
 
