@@ -21,5 +21,5 @@ function mka() {
 function repopick() {
     set_stuff_for_environment
     T=$(gettop)
-    $T/vendor/404/build/tools/repopick.py $@
+    ANDROID_BUILD_TOP="$(gettop)" $T/vendor/404/build/tools/repopick.py $@
 }
