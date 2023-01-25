@@ -23,7 +23,7 @@ P404_VERSION_CODE := Tokui
 P404_BUILD_NUMBER := LPBN.Q0202.$(shell date -u +%d).$(shell date -u +%m)001
 
 ifndef P404_BUILDTYPE
-  P404_BUILDTYPE := unofficial
+  P404_BUILDTYPE := Community
 endif
 
 P404_VERSION := $(P404_VERSION_MAJ).$(P404_VERSION_MIN)-$(shell date -u +%Y%m%d-%H%M%S)-$(P404_BUILDTYPE)-$(P404_BUILD)
