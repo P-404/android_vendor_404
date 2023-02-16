@@ -28,10 +28,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-local_manifest = ".repo/manifests/p404.xml"
+local_manifest = ".repo/local_manifests/p404.xml"
 default_revision = "tokui"
 default_dependencies = "p404.dependencies"
-org_manifest = "404"  # leave empty if org is provided in manifest
+org_manifest = "p404-devices"  # leave empty if org is provided in manifest
 org_display = "P404-Devices"  # needed for displaying
 
 default_manifest = ".repo/manifests/default.xml"
@@ -39,7 +39,7 @@ p404_manifest = ".repo/manifests/404.xml"
 
 github_token = None
 
-local_manifests = '.repo/manifests'
+local_manifests = '.repo/local_manifests'
 if not os.path.exists(local_manifests):
     os.makedirs(local_manifests)
 
@@ -82,16 +82,16 @@ def indent(elem, level=0):
 
 def get_manifest_path():
     '''Find the current manifest path
-    In old versions of repo this is at .repo/manifest.xml
-    In new versions, .repo/manifest.xml includes an include
-    to some arbitrary file in .repo/manifests'''
+    In old versions of repo this is at .repo/default.xml
+    In new versions, .repo/local_manifest/p404.xml includes an include
+    to some arbitrary file in .repo/local_manifests'''
 
-    m = ElementTree.parse(".repo/manifest.xml")
+    m = ElementTree.parse(".repo/local_manifest.xml")
     try:
         m.findall('default')[0]
-        return '.repo/manifest.xml'
+        return '.repo/p404.xml'
     except IndexError:
-        return ".repo/manifests/{}".format(m.find("include").get("name"))
+        return ".repo/local_manifests/{}".format(m.find("include").get("name"))
 
 def load_manifest(manifest):
     try:
