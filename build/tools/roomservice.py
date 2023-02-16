@@ -28,10 +28,10 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-local_manifest = ".repo/manifests/p404.xml"
+local_manifest = ".repo/local_manifests/p404.xml"
 default_revision = "tokui"
 default_dependencies = "p404.dependencies"
-org_manifest = "404"  # leave empty if org is provided in manifest
+org_manifest = "p404-devices"  # leave empty if org is provided in manifest
 org_display = "P404-Devices"  # needed for displaying
 
 default_manifest = ".repo/manifests/default.xml"
