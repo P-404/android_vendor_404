@@ -14,33 +14,13 @@
 # limitations under the License.
 #
 
-# Include support for additional filesystems
+# Filesystems tools
 PRODUCT_PACKAGES += \
-    e2fsck \
-    mke2fs \
-    tune2fs \
-    mount.exfat \
-    fsck.exfat \
-    mkfs.exfat \
-    mkfs.f2fs \
-    fsck.f2fs \
-    fibmap.f2fs \
-    mkfs.ntfs \
     fsck.ntfs \
+    mkfs.ntfs \
     mount.ntfs \
-    7z \
-    bash \
-    bzip2 \
-    curl \
-    lib7z \
-    powertop \
-    pigz \
-    tinymix \
-    unrar \
-    unzip \
-    vim \
-    rsync \
-    zip
+    fsck.exfat \
+    mkfs.exfat
 
 # 404 Packages
 PRODUCT_PACKAGES += \
