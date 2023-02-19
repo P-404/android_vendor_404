@@ -30,7 +30,7 @@ PRODUCT_PACKAGES += \
     ThemePicker \
     AbleMusic \
     Updater \
-    Camera \
+    Aperture \
     RepainterServicePriv
 
 # SystemUI plugins
