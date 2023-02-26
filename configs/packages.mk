@@ -33,7 +33,11 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     Covers \
     ThemePicker \
-    Updater \
+    Updater
+
+# Others Apps
+PRODUCT_PACKAGES += \
+    Etar \
     Aperture \
     RepainterServicePriv
 
