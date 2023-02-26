@@ -33,7 +33,6 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     Covers \
     ThemePicker \
-    AbleMusic \
     Updater \
     Aperture \
     RepainterServicePriv
