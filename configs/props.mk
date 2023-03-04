@@ -49,6 +49,10 @@ PRODUCT_SYSTEM_EXT_PROPERTIES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.input.video_enabled=false
 
+# Enable SystemUIDialog volume panel
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    sys.fflag.override.settings_volume_panel_in_systemui=true
+
 # One Handed mode
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.support_one_handed_mode=true \
