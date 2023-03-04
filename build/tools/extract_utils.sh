@@ -110,7 +110,7 @@ function setup_vendor() {
         VENDOR_RADIO_STATE=0
     fi
 
-    export BINARIES_LOCATION="$P404_ROOT"/prebuilts/tools-p404/${HOST}-x86/bin
+    export BINARIES_LOCATION="$P404_ROOT"/vendor/404/build/tools/${HOST}
 
     export SIMG2IMG="$BINARIES_LOCATION"/simg2img
     export LPUNPACK="$BINARIES_LOCATION"/lpunpack
@@ -1185,16 +1185,16 @@ function oat2dex() {
     local OAT=
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$P404_ROOT"/prebuilts/tools-p404/common/smali/baksmali.jar
-        export SMALIJAR="$P404_ROOT"/prebuilts/tools-p404/common/smali/smali.jar
+        export BAKSMALIJAR="$P404_ROOT"/vendor/404/build/tools/smali/baksmali.jar
+        export SMALIJAR="$P404_ROOT"/vendor/404/build/tools/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
-        export VDEXEXTRACTOR="$P404_ROOT"/prebuilts/tools-p404/"${HOST,,}"-x86/bin/vdexExtractor
+        export VDEXEXTRACTOR="$P404_ROOT"/vendor/404/build/tools/"${HOST}"/vdexExtractor
     fi
 
     if [ -z "$CDEXCONVERTER" ]; then
-        export CDEXCONVERTER="$P404_ROOT"/prebuilts/tools-p404/"${HOST,,}"-x86/bin/compact_dex_converter
+        export CDEXCONVERTER="$P404_ROOT"/vendor/404/build/tools/"${HOST}"/compact_dex_converter
     fi
 
     # Extract existing boot.oats to the temp folder
@@ -1465,7 +1465,7 @@ function extract() {
 
             # Extract A/B OTA
             if [ -a "$DUMPDIR"/payload.bin ]; then
-                python3 "$P404_ROOT"/prebuilts/tools-p404/extract_ota.py "$DUMPDIR"/payload.bin -o "$DUMPDIR" -p "system" "odm" "product" "system_ext" "vendor" 2>&1
+                python3 "$P404_ROOT"/vendor/404/build/tools/extract_ota.py "$DUMPDIR"/payload.bin -o "$DUMPDIR" -p "system" "odm" "product" "system_ext" "vendor" 2>&1
             fi
 
             for PARTITION in "system" "odm" "product" "system_ext" "vendor"
@@ -1478,7 +1478,7 @@ function extract() {
                 fi
                 if [ -a "$DUMPDIR"/"$PARTITION".new.dat ]; then
                     echo "Converting "$PARTITION".new.dat to "$PARTITION".img"
-                    python "$P404_ROOT"/vendor/aosp/build/tools/sdat2img.py "$DUMPDIR"/"$PARTITION".transfer.list "$DUMPDIR"/"$PARTITION".new.dat "$DUMPDIR"/"$PARTITION".img 2>&1
+                    python "$P404_ROOT"/vendor/404/build/tools/sdat2img.py "$DUMPDIR"/"$PARTITION".transfer.list "$DUMPDIR"/"$PARTITION".new.dat "$DUMPDIR"/"$PARTITION".img 2>&1
                     rm -rf "$DUMPDIR"/"$PARTITION".new.dat "$DUMPDIR"/"$PARTITION"
                     mkdir "$DUMPDIR"/"$PARTITION" "$DUMPDIR"/tmp
                     extract_img_data "$DUMPDIR"/"$PARTITION".img "$DUMPDIR"/"$PARTITION"/
