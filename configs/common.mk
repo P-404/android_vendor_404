@@ -21,7 +21,7 @@ include vendor/404/configs/art.mk
 include vendor/404/configs/branding.mk
 
 # Fonts
-include vendor/404/configs/fonts.mk
+include vendor/overlays/404/fonts.mk
 
 # Packages
 include vendor/404/configs/packages.mk
