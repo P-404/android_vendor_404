@@ -16,7 +16,7 @@
 
 # Branding stuffs
 P404_VERSION_MAJ := 6
-P404_VERSION_MIN := 1
+P404_VERSION_MIN := 2
 
 P404_VERSION_CODE := Tokui
 
