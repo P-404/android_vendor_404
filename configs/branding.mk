@@ -15,10 +15,10 @@
 #
 
 # Branding stuffs
-P404_VERSION_MAJ := 6
-P404_VERSION_MIN := 2
+P404_VERSION_MAJ := 7
+P404_VERSION_MIN := 0
 
-P404_VERSION_CODE := Tokui
+P404_VERSION_CODE := umai
 
 P404_BUILD_NUMBER := LPBN.Q0202.$(shell date -u +%d).$(shell date -u +%m)001
 
