@@ -57,6 +57,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ANGLE
 
+# Prebuilts
+PRODUCT_PACKAGES += \
+    GrapheneCam
+
 # SystemUI plugins
 PRODUCT_PACKAGES += \
     QuickAccessWallet \
