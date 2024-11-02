@@ -49,7 +49,7 @@ PRODUCT_PACKAGES += \
     Covers \
     ThemePicker \
     404Clock \
-    AbleMusic \
+    Gramophone \
     Updater \
     SoftAPManager
 
