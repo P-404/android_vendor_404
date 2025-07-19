@@ -1,4 +1,5 @@
-# Copyright (C) 2020-2021 Project 404
+# Copyright (C) 2017 Unlegacy-Android
+# Copyright (C) 2017,2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,14 +14,13 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------
-# PP404 OTA update package
+# 404 OTA update package
 
-P404_TARGET_PACKAGE := $(PRODUCT_OUT)/project-404-$(P404_VERSION).zip
+P404_TARGET_PACKAGE := $(PRODUCT_OUT)/p404-$(P404_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
-.PHONY: bacon
-bacon: $(DEFAULT_GOAL) $(INTERNAL_OTA_PACKAGE_TARGET)
+$(P404_TARGET_PACKAGE): $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(P404_TARGET_PACKAGE)
 	$(hide) $(SHA256) $(P404_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(P404_TARGET_PACKAGE).sha256sum
 	@echo -e ""
@@ -31,10 +31,7 @@ bacon: $(DEFAULT_GOAL) $(INTERNAL_OTA_PACKAGE_TARGET)
 	echo -e ${CL_BLD}" |_|   |_|  \___// |\___|\___|\__|    |_|  \___/   |_|  "${CL_RST}
 	echo -e ${CL_BLD}"               |__/                                     "${CL_RST}
 	@echo -e ""
-	@echo -e ${CL_BLD}${CL_CYN}"===============================-Package complete-==============================="${CL_RED}
-	@echo -e ${CL_BLD}${CL_CYN}"Zip: "${CL_YLW} $(P404_TARGET_PACKAGE)${CL_RST}
-	@echo -e ${CL_BLD}${CL_CYN}"SHA256: "${CL_YLW}" `cat $(P404_TARGET_PACKAGE).sha256sum | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_BLD}${CL_CYN}"Size:"${CL_YLW}" `du -sh $(P404_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_BLD}${CL_CYN}"Size in Int:"${CL_YLW}" `wc -c $(P404_TARGET_PACKAGE) | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_BLD}${CL_CYN}"TimeStamp:"${CL_YLW}" `cat $(PRODUCT_OUT)/system/build.prop | grep ro.build.date.utc | cut -d'=' -f2 | awk '{print $$1}' `"${CL_RST}
-	@echo -e ${CL_BLD}${CL_CYN}"================================================================================"${CL_RED}
+	@echo "Package Complete: $(P404_TARGET_PACKAGE)" >&2
+
+.PHONY: bacon
+bacon: $(P404_TARGET_PACKAGE) $(DEFAULT_GOAL)

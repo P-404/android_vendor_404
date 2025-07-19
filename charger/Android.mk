@@ -1,107 +1,104 @@
 #
-# Copyright (C) 2020 Raphielscape LLC. and Haruka LLC.
+# Copyright (C) 2021 The LineageOS Project
 #
-# Licensed under the Apache License, Version 2.0 (the License);
+# Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
 #      http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an AS IS BASIS,
+# distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
 
 LOCAL_PATH := $(call my-dir)
 
-### pixel_charger_res_images ###
-ifneq ($(strip $(LOCAL_CHARGER_NO_UI)),true)
-define _add-product-charger-image
-include $$(CLEAR_VARS)
-ifeq ($(2),vendor)
-LOCAL_MODULE := pixel_charger_res_images_charger_$(notdir $(1))_vendor
-else
-LOCAL_MODULE := pixel_charger_res_images_charger_$(notdir $(1))
+# Set p404_charger_density to the density bucket of the device.
+p404_charger_density := mdpi
+ifneq (,$(TARGET_SCREEN_DENSITY))
+p404_charger_density := $(strip \
+  $(or $(if $(filter $(shell echo $$(($(TARGET_SCREEN_DENSITY) >= 560))),1),xxxhdpi),\
+       $(if $(filter $(shell echo $$(($(TARGET_SCREEN_DENSITY) >= 400))),1),xxhdpi),\
+       $(if $(filter $(shell echo $$(($(TARGET_SCREEN_DENSITY) >= 280))),1),xhdpi),\
+       $(if $(filter $(shell echo $$(($(TARGET_SCREEN_DENSITY) >= 200))),1),hdpi,mdpi)))
+else ifneq (,$(filter mdpi hdpi xhdpi xxhdpi xxxhdpi,$(PRODUCT_AAPT_PREF_CONFIG)))
+# If PRODUCT_AAPT_PREF_CONFIG includes a dpi bucket, then use that value.
+p404_charger_density := $(PRODUCT_AAPT_PREF_CONFIG)
 endif
-LOCAL_MODULE_STEM := $(notdir $(1))
-ifeq ($(2),vendor)
-_img_modules_vendor += $$(LOCAL_MODULE)
-else
-_img_modules += $$(LOCAL_MODULE)
-endif
-LOCAL_SRC_FILES := $1
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_RELATIVE_PATH := res/images/charger
-ifeq ($(2),vendor)
-LOCAL_VENDOR_MODULE := true
-else
-LOCAL_PRODUCT_MODULE := true
-endif
-include $$(BUILD_PREBUILT)
-endef
-
-_img_modules :=
-$(foreach _img, $(call find-subdir-subdir-files, "images/charger", "*.png"), \
-  $(eval $(call _add-product-charger-image,$(_img))))
-_img_modules_vendor :=
-$(foreach _img, $(call find-subdir-subdir-files, "images/charger", "*.png"), \
-  $(eval $(call _add-product-charger-image,$(_img),vendor)))
-
-### pixel_charger_animation_file ###
-define _add-product-charger-animation-file
-include $$(CLEAR_VARS)
-ifeq ($(2),vendor)
-LOCAL_MODULE := pixel_charger_res_values_charger_$(notdir $(1))_vendor
-else
-LOCAL_MODULE := pixel_charger_res_values_charger_$(notdir $(1))
-endif
-LOCAL_MODULE_STEM := $(notdir $(1))
-ifeq ($(2),vendor)
-_anim_modules_vendor += $$(LOCAL_MODULE)
-else
-_anim_modules += $$(LOCAL_MODULE)
-endif
-LOCAL_SRC_FILES := $1
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := ETC
-LOCAL_MODULE_RELATIVE_PATH := res/values/charger
-ifeq ($(2),vendor)
-LOCAL_VENDOR_MODULE := true
-LOCAL_OVERRIDES_MODULES := charger_res_images_vendor
-else
-LOCAL_PRODUCT_MODULE := true
-LOCAL_OVERRIDES_MODULES := charger_res_images
-endif
-include $$(BUILD_PREBUILT)
-endef
-
-_anim_modules :=
-$(foreach _txt, $(call find-subdir-subdir-files, "values/charger", "*.txt"), \
-  $(eval $(call _add-product-charger-animation-file,$(_txt))))
-_anim_modules_vendor :=
-$(foreach _txt, $(call find-subdir-subdir-files, "values/charger", "*.txt"), \
-  $(eval $(call _add-product-charger-animation-file,$(_txt),vendor)))
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := p404_charger
+LOCAL_MODULE := p404_charger_battery_scale
+LOCAL_MODULE_STEM := battery_scale.png
+LOCAL_SRC_FILES := $(p404_charger_density)/battery_scale.png
 LOCAL_MODULE_TAGS := optional
-LOCAL_REQUIRED_MODULES := $(_img_modules) $(_anim_modules)
-include $(BUILD_PHONY_PACKAGE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_PRODUCT_ETC)/res/images/charger
+include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := p404_charger_vendor
+LOCAL_MODULE := p404_charger_battery_scale_vendor
+LOCAL_MODULE_STEM := battery_scale.png
+LOCAL_SRC_FILES := $(p404_charger_density)/battery_scale.png
 LOCAL_MODULE_TAGS := optional
-LOCAL_REQUIRED_MODULES := $(_img_modules_vendor) $(_anim_modules_vendor)
-include $(BUILD_PHONY_PACKAGE)
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/res/images/charger
+include $(BUILD_PREBUILT)
 
-_add-product-charger-image :=
-_add-product-charger-animation-file :=
-_img_modules :=
-_img_modules_vendor :=
-_anim_modules :=
-_anim_modules_vendor :=
-endif # LOCAL_CHARGER_NO_UI
+include $(CLEAR_VARS)
+LOCAL_MODULE := p404_charger_battery_fail
+LOCAL_MODULE_STEM := battery_fail.png
+LOCAL_SRC_FILES := $(p404_charger_density)/battery_fail.png
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_PRODUCT_ETC)/res/images/charger
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := p404_charger_battery_fail_vendor
+LOCAL_MODULE_STEM := battery_fail.png
+LOCAL_SRC_FILES := $(p404_charger_density)/battery_fail.png
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/res/images/charger
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := p404_charger_font
+LOCAL_MODULE_STEM := percent_font.png
+LOCAL_SRC_FILES := $(p404_charger_density)/percent_font.png
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_PRODUCT_ETC)/res/images/charger
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := p404_charger_font_vendor
+LOCAL_MODULE_STEM := percent_font.png
+LOCAL_SRC_FILES := $(p404_charger_density)/percent_font.png
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/res/images/charger
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := p404_charger_animation
+LOCAL_MODULE_STEM := animation.txt
+LOCAL_SRC_FILES := animation.txt
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_PRODUCT_ETC)/res/values/charger
+LOCAL_REQUIRED_MODULES := p404_charger_battery_scale p404_charger_battery_fail p404_charger_font
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := p404_charger_animation_vendor
+LOCAL_MODULE_STEM := animation.txt
+LOCAL_SRC_FILES := animation.txt
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/res/values/charger
+LOCAL_REQUIRED_MODULES := p404_charger_battery_scale_vendor p404_charger_battery_fail_vendor p404_charger_font_vendor
+include $(BUILD_PREBUILT)
